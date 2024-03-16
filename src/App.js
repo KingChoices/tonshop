@@ -1,10 +1,17 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home, Login, Signup, Profile } from "./pages/pages";
+import "./styles/global.scss";
 
 function App() {
   return (
-    <div className="App">
-      <h1>My First React App</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
