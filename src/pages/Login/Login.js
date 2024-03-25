@@ -1,44 +1,47 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-  const [isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-      [e.target.password]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = {
+      username: e.target.username.value,
+      password: e.target.password.value,
+    };
     try {
-      const response = await axios.get("http://localhost:5050/db/users", {
-        formData,
-      });
+      console.log("Form data:", formData);
+      const response = await axios.post(
+        "http://localhost:5050/db/login",
+        formData
+      );
       console.log("User logged in successfully:", response);
-      setIsLogged(true);
+      localStorage.setItem("token", response.data.token);
+      navigate("/");
+      console.log("Logged in:", response.data.token);
     } catch (error) {
-      console.error("Error logging in:", error.response.data);
+      console.error("Error logging in:", error.message);
     }
   };
+
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
           <input type="text" id="username" name="username" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" />
-          <button type="submit" onClick={handleSubmit}>
-            Login
-          </button>
+          <button type="submit">Login</button>
         </form>
       </div>
     </>

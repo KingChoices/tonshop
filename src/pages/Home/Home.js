@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import Posts from "../../components/Posts/Posts";
+import "./home.scss";
 
 const Home = () => {
   return (
@@ -9,7 +11,9 @@ const Home = () => {
         <Navbar />
       </header>
       <main>
-        <h1>Home</h1>
+        <section className="posts__section">
+          <Posts />
+        </section>
       </main>
       <footer>
         <Footer />

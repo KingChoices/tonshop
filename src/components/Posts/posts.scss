@@ -1,0 +1,14 @@
+@import "../../styles/_partials/mixins";
+
+.post__container {
+  display: flex;
+  flex-direction: column;
+
+  &--title {
+    @include pageHeader;
+    padding: 24px;
+    @include mobile {
+      padding: 16px;
+    }
+  }
+}

@@ -1,11 +1,7 @@
 import React from "react";
-import "./card.scss";
-import { useParams } from "react-router-dom";
+import "./dashboard.scss";
 
-const Card = ({ title, image_url, description, user, del }) => {
-  const params = useParams();
-  console.log(params);
-
+const Dashcard = ({ id, title, image_url, description, user, del }) => {
   return (
     <div className="card__container">
       <div>
@@ -25,8 +21,13 @@ const Card = ({ title, image_url, description, user, del }) => {
       <div>
         <p className="card__container--user">by {user}</p>
       </div>
+      <div className="dash__view">
+        <button className="card__container--btn" onClick={del}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Card;
+export default Dashcard;
