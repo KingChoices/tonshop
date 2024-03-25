@@ -1,0 +1,18 @@
+@import "../../styles/_partials/mixins";
+
+.footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid $black;
+  margin-top: 24px;
+  &--text {
+    text-align: center;
+    @include bodyLarge;
+    padding: 24px;
+    @include mobile {
+      padding: 16px;
+      margin: 16px;
+    }
+  }
+}

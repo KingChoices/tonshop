@@ -1,0 +1,172 @@
+//Media Query
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+//Colors
+$black: #323232;
+$silver: #afafaf;
+$white: #ffffff;
+$dark-black: #000000;
+$mercury: #e1e1e1;
+$white: #ffffff;
+$slate: #5c667e;
+$cloud: #bdc5d5;
+$graphite: #232940;
+$light-grey: #f7f8f9;
+$green: #158463;
+$red: #c94515;
+
+//Shadows
+$white-shadow: 0 0px 12px rgb(255, 255, 255);
+$black-shadow: 0 0px 12px rgb(0, 0, 0);
+
+//Hover Shadows
+$hover_white-shadow: 0 0px 20px rgb(255, 255, 255);
+
+//Type Kit
+@mixin pageHeader {
+  font-size: 32px;
+  line-height: 40px;
+
+  @include mobile {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+@mixin subHeader {
+  font-size: 24px;
+  line-height: 32px;
+
+  @include mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@mixin bodyLarge {
+  font-size: 24px;
+  line-height: 28px;
+
+  @include mobile {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+@mixin bodyMedium {
+  font-size: 18px;
+  line-height: 22px;
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@mixin bodySmall {
+  font-size: 14px;
+  line-height: 18px;
+
+  @include mobile {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+
+//Font Face
+@font-face {
+  font-family: "Titillium";
+  src: url("../../assets/fonts/titillium_web/TitilliumWeb-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium-SemiBold";
+  src: url("../../assets/fonts/titillium_web/TitilliumWeb-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+//Form Fields
+@mixin textField {
+  height: 36px;
+  border: 1px solid $silver;
+  color: $black;
+  border-radius: 20px;
+  padding: 0px 16px;
+  margin-top: 4px;
+
+  @include mobile {
+    height: 32px;
+    width: auto;
+  }
+
+  &:active {
+    border-color: $dark-black;
+    color: $black;
+  }
+
+  &:required {
+    border-color: $red;
+  }
+}
+
+@mixin primaryButton {
+  height: 36px;
+  width: auto;
+  background-color: $green;
+  border: 1px solid $black;
+  color: $white;
+  border-radius: 20px;
+  padding: 0px 16px;
+
+  @include mobile {
+    height: 32px;
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: $graphite;
+    border: 1px solid $graphite;
+  }
+}
+
+@mixin logoutButton {
+  height: 36px;
+  width: auto;
+  color: $white;
+  border: 1px solid $red;
+  background-color: red;
+  border-radius: 20px;
+  padding: 0px 16px;
+
+  @include mobile {
+    height: 32px;
+    width: 100%;
+  }
+
+  &:hover {
+    border-color: $graphite;
+    color: $white;
+    background-color: $graphite;
+  }
+}
